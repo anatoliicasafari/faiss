@@ -80,7 +80,8 @@ float fvec_Linf_ref(const float* x, const float* y, size_t d) {
     size_t i;
     float res = 0;
     for (i = 0; i < d; i++) {
-        res = fmax(res, fabs(x[i] - y[i]));
+        // res = fmax(res, fabs(x[i] - y[i]));
+        res = fmin(res, fabs(x[i] - y[i]));
     }
     return res;
 }
