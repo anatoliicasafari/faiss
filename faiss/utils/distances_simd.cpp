@@ -14,6 +14,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstring>
+#include <limits>
 
 #include <faiss/impl/FaissAssert.h>
 #include <faiss/impl/platform_macros.h>
@@ -78,7 +79,7 @@ float fvec_L1_ref(const float* x, const float* y, size_t d) {
 
 float fvec_Linf_ref(const float* x, const float* y, size_t d) {
     size_t i;
-    float res = 0;
+    float res = std::numeric_limits<float>::max();
     for (i = 0; i < d; i++) {
         // res = fmax(res, fabs(x[i] - y[i]));
         res = fmin(res, fabs(x[i] - y[i]));
